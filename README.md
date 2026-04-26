@@ -1,6 +1,7 @@
 # AGI Governance Copilot 🛡️🏛️
 
-> **An OpenClaw-powered agentic governance assistant for DAOs and public-goods funds — built on the AGI Future Foundation's Institutional AGI, Fiduciary Shield, and Governance Engine frameworks.**
+> **An OpenClaw-powered agentic governance assistant for DAOs and public-goods funds — built on the
+AGI Future Foundation's Institutional AGI, Fiduciary Shield, and Governance Engine frameworks.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Built with OpenClaw](https://img.shields.io/badge/Built%20with-OpenClaw-purple)](https://github.com/gcc-foundation/openclaw)
