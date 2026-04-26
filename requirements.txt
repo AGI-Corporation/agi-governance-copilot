@@ -1,0 +1,29 @@
+# AGI Governance Copilot - Python Dependencies
+
+# OpenClaw agentic framework
+openclaw>=0.3.0
+
+# LLM providers
+openai>=1.12.0
+anthropica>=0.20.0
+
+# HTTP and async
+httpx>=0.25.0
+aiohttp>=3.9.0
+
+# Data handling
+pydantic>=2.5.0
+python-dotenv>=1.0.0
+yaml>=0.2.5
+
+# GitHub integration
+PyGithub>=2.1.0
+
+# Telegram bot
+python-telegram-bot>=20.7
+
+# Utilities
+click>=8.1.0
+rich>=13.7.0
+hashlib-additional>=0.1.0
+python-dateutil>=2.8.0
