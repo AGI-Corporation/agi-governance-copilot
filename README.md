@@ -6,18 +6,21 @@
 
 **An OpenClaw-powered agentic governance assistant for DAOs and public-goods funds — built on the AGI Future Foundation's Institutional AGI, Fiduciary Shield, and Governance Engine frameworks.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Built with OpenClaw](https://img.shields.io/badge/Built%20with-OpenClaw-purple)](https://github.com/gcc-foundation/openclaw) [![GCC Agentic Public Goods Track](https://img.shields.io/badge/GCC-Agentic%20Public%20Goods-green)](https://www.gccofficial.org/en) [![Documentation](https://img.shields.io/badge/docs-Wiki-blue)](https://github.com/AGI-Corporation/agi-governance-copilot/wiki)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Built with OpenClaw](https://img.shields.io/badge/Built%20with-OpenClaw-purple)](https://github.com/gcc-foundation/openclaw)
+[![GCC Agentic Public Goods Track](https://img.shields.io/badge/GCC-Agentic%20Public%20Goods-green)](https://www.gccofficial.org/en)
+[![Documentation](https://img.shields.io/badge/docs-Wiki-blue)](https://github.com/AGI-Corporation/agi-governance-copilot/wiki)
 
 ---
 
 ## Overview
-This project is the **first reference implementation** of the [AGI Future Foundation PBC](https://www.agifuturefoundation.org)'s Institutional AGI governance architecture, translated into a working agentic stack using OpenClaw. It helps decentralized organizations:
+This project is the **first reference implementation** of the [AGI Future Foundation PBC](https://www.agifuturefoundation.org)'s Institutional AGI governance architecture, translated into a working agentic stack using OpenClaw and Bodhi. It helps decentralized organizations:
 
 - Evaluate and triage governance proposals against fiduciary and public-benefit rules
 - Allocate grants with structured, auditable decision memos
 - Track funded project impact via periodic AI-generated Impact Snapshots
 - Maintain a verifiable Governance Ledger — every agent action is logged and traceable
-- Receive weekly governance digests in Telegram / Discord / GitHub
+- Receive weekly governance digests in Telegram / Discord / GitHub / Voice (via Bodhi)
 
 **The agent is advisory, never autonomous with funds.** It drafts. Humans decide.
 
@@ -39,12 +42,12 @@ This project is the **first reference implementation** of the [AGI Future Founda
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    Interface Layer                      │
-│      Telegram · Discord · GitHub Issues · CLI           │
+│   Bodhi (Voice) · Telegram · Discord · GitHub · CLI     │
 └────────────────────┬────────────────────────────────────┘
                      │
 ┌────────────────────▼────────────────────────────────────┐
-│          Governance Brain (OpenClaw Agent)              │
-│   LLM + DAO Charter + AGI Future Foundation Rules       │
+│            Governance Brain (OpenClaw Agent)            │
+│    LLM + DAO Charter + AGI Future Foundation Rules      │
 │   Fiduciary Shield · Institutional Grid · Public Benefit│
 └────────────────────┬────────────────────────────────────┘
                      │
@@ -84,7 +87,7 @@ This project is the **first reference implementation** of the [AGI Future Founda
 ### 4. Governance Digest
 - Weekly or on-demand summary for DAO stewards
 - Highlights: new proposals pending review, stale projects, risk alerts
-- Delivered to Telegram, Discord, or GitHub
+- Delivered to Telegram, Discord, GitHub, and Voice (via Bodhi)
 
 ### 5. Governance Ledger
 - Every agent recommendation logged to `governance-ledger.jsonl`
@@ -134,28 +137,28 @@ agi-governance-copilot/
 ├── LICENSE
 ├── requirements.txt
 ├── config/
-│   ├── agent-config.example.yaml     # OpenClaw agent config template
-│   ├── example-dao-rules.md          # Sample DAO charter / governance rules
-│   └── public-goods-principles.md    # AGI Future Foundation public-benefit constraints
+│   ├── agent-config.example.yaml   # OpenClaw agent config template
+│   ├── example-dao-rules.md        # Sample DAO charter / governance rules
+│   └── public-goods-principles.md  # AGI Future Foundation public-benefit constraints
 ├── docs/
-│   ├── architecture.md               # Conceptual → technical architecture mapping
-│   ├── governance-model.md           # Fiduciary shield + institutional grid explanation
-│   └── safety-and-audit.md           # Limitations, ledger design, safety constraints
+│   ├── architecture.md             # Conceptual → technical architecture mapping
+│   ├── governance-model.md         # Fiduciary shield + institutional grid explanation
+│   └── safety-and-audit.md         # Limitations, ledger design, safety constraints
 ├── src/
-│   ├── main.py                       # CLI entrypoint
-│   ├── agent.py                      # OpenClaw agent initialization
+│   ├── main.py                     # CLI entrypoint
+│   ├── agent.py                    # OpenClaw agent initialization
 │   ├── tools/
-│   │   ├── evaluate_proposal.py      # Proposal evaluation tool
-│   │   ├── impact_snapshot.py        # Impact evaluation tool
-│   │   ├── governance_digest.py      # Digest generation tool
-│   │   └── ledger.py                 # Governance ledger logging
+│   │   ├── evaluate_proposal.py    # Proposal evaluation tool
+│   │   ├── impact_snapshot.py      # Impact evaluation tool
+│   │   ├── governance_digest.py    # Digest generation tool
+│   │   └── ledger.py               # Governance ledger logging
 │   └── schemas/
-│       ├── impact_card.py            # Impact Card schema
-│       └── risk_card.py              # Risk Card schema
+│       ├── impact_card.py          # Impact Card schema
+│       └── risk_card.py            # Risk Card schema
 └── examples/
-    ├── sample-proposal.json          # Example grant proposal
-    ├── sample-project-update.json    # Example funded project update
-    ├── sample-impact-snapshot.json   # Example agent output
+    ├── sample-proposal.json        # Example grant proposal
+    ├── sample-project-update.json  # Example funded project update
+    ├── sample-impact-snapshot.json # Example agent output
     └── sample-governance-ledger.jsonl # Example audit log
 ```
 
@@ -171,21 +174,26 @@ This project operationalizes the following AGI Future Foundation PBC frameworks:
 | **Institutional Grid** | Ruleset structure encoding public-benefit obligations |
 | **Governance Engine** | Proposal → evaluation → decision → follow-up pipeline |
 | **AGI Institutional Ledger** | Governance Ledger (JSONL) with hashed, auditable entries |
-| **Agentic Web Architecture** | Multi-channel delivery: GitHub, Telegram, Discord |
+| **Bodhi Realtime Agent** | Voice Interface Layer with non-blocking background sub-agents |
+| **Agentic Web Architecture** | Multi-channel delivery: GitHub, Telegram, Discord, Voice |
 
 ---
 
 ## 🛠 Builders & Investors
 We are actively seeking contributors and strategic partners to expand the Institutional Grid.
+
 * **Builders**: Join our ecosystem to build the next generation of agentic governance tools. Check out the [MIKE-OGI-Framework](https://github.com/AGI-Corporation/agi-governance-copilot/wiki/MIKE-OGI-Framework) to start building sub-agents.
-* **Investors**: For partnership inquiries and strategic collaboration, please reach out via the contact info below.
+* **Investors**: Align with the OGI model. For partnership inquiries and strategic collaboration, please reach out via the contact info below.
 
 ---
 
 ## 📧 Contact & Support
-* **General Inquiries**: [x@agicorp.network](mailto:x@agicorp.network)
+
+* **General Inquiries**: [contact@agicorp.network](mailto:contact@agicorp.network)
 * **Technical (M.I.K.E.)**: [mike@agicorp.network](mailto:mike@agicorp.network)
+* **Support**: [hello@maxhealth.tech](mailto:hello@maxhealth.tech)
 * **Website**: [www.agicorp.network](https://www.agicorp.network)
+* **Social**: [LinkedIn](https://www.linkedin.com/in/infogurus) | [X (Twitter)](https://x.com/idescidude)
 
 ---
 
@@ -211,5 +219,6 @@ PRs welcome. See [docs/architecture.md](docs/architecture.md) to understand the 
 ## Links
 - GCC Foundation: https://www.gccofficial.org/en
 - GCC OpenClaw Grants: https://github.com/gcc-foundation/gcc-openclaw-grants
+- Bodhi Realtime Agent: https://github.com/AGI-Corporation/bodhi_realtime_agent
 - AGI Corporation: https://www.agicorp.network
 - AGI Future Foundation: https://www.agifuturefoundation.org
