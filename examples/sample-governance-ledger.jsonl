@@ -1,0 +1,3 @@
+{"timestamp": "2025-04-26T09:01:22.341Z", "action": "evaluate_proposal", "input_hash": "a3f2c1d4e5b6", "output_hash": "f7e8d9c0b1a2", "input_preview": "{\"proposal\": \"examples/sample-proposal.json\"}"}
+{"timestamp": "2025-04-26T09:02:45.812Z", "action": "generate_impact_snapshot", "input_hash": "b4c3d2e1f0a9", "output_hash": "g8h9i0j1k2l3", "input_preview": "{\"project\": \"examples/sample-project-update.json\"}"}
+{"timestamp": "2025-04-26T09:15:00.000Z", "action": "emit_governance_digest", "input_hash": "c5d4e3f2g1h0", "output_hash": "h9i0j1k2l3m4", "input_preview": "{\"since\": \"7d\"}"}
