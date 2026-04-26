@@ -64,6 +64,13 @@ graph TD
     FS -->|Requires| HUMAN
 ```
 
+
+### 🎙️ Real-time Voice Interface (Bodhi Agent)
+The AGI Governance Copilot features a high-performance voice interface powered by [Bodhi](https://github.com/AGI-Corporation/bodhi_realtime_agent). 
+* • **Parallel Execution**: Governance tasks run in the background while the voice agent remains conversational.
+* • **Interactive Subagents**: If the Copilot needs fiduciary clarification, it asks the user mid-task via natural voice.
+* • **Direct OpenClaw Integration**: The voice stack communicates directly with the OpenClaw gateway for seamless tool execution.
+
 ### 🔄 Proposal Decision Flow
 ```mermaid
 sequenceDiagram
