@@ -4,213 +4,212 @@
 
 # AGI Governance Copilot 🛡️🏛️
 
-> **An OpenClaw-powered agentic governance assistant for DAOs and public-goods funds — built on the AGI Future Foundation's Institutional AGI, Fiduciary Shield, and Governance Engine frameworks.**
+**An OpenClaw-powered agentic governance assistant for DAOs and public-goods funds — built on the AGI Future Foundation's Institutional AGI, Fiduciary Shield, and Governance Engine frameworks.**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Built with OpenClaw](https://img.shields.io/badge/Built%20with-OpenClaw-purple)](https://github.com/gcc-foundation/openclaw)
-[![GCC Agentic Public Goods Track](https://img.shields.io/badge/GCC-Agentic%20Public%20Goods-green)](https://www.gccofficial.org/en)
-[![Documentation](https://img.shields.io/badge/docs-Wiki-blue)](https://github.com/AGI-Corporation/agi-governance-copilot/wiki)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Built with OpenClaw](https://img.shields.io/badge/Built%20with-OpenClaw-purple)](https://github.com/gcc-foundation/openclaw) [![GCC Agentic Public Goods Track](https://img.shields.io/badge/GCC-Agentic%20Public%20Goods-green)](https://www.gccofficial.org/en) [![Documentation](https://img.shields.io/badge/docs-Wiki-blue)](https://github.com/AGI-Corporation/agi-governance-copilot/wiki)
 
 ---
 
-## 🌐 Overview
+## Overview
+This project is the **first reference implementation** of the [AGI Future Foundation PBC](https://www.agifuturefoundation.org)'s Institutional AGI governance architecture, translated into a working agentic stack using OpenClaw. It helps decentralized organizations:
 
-The **AGI Governance Copilot** is the first reference implementation of the [AGI Future Foundation PBC](https://www.agifuturefoundation.org)'s **Institutional AGI** governance architecture. By leveraging the [OpenClaw](https://github.com/gcc-foundation/openclaw) framework, it provides a transparent, auditable, and safe way for decentralized organizations to:
+- Evaluate and triage governance proposals against fiduciary and public-benefit rules
+- Allocate grants with structured, auditable decision memos
+- Track funded project impact via periodic AI-generated Impact Snapshots
+- Maintain a verifiable Governance Ledger — every agent action is logged and traceable
+- Receive weekly governance digests in Telegram / Discord / GitHub
 
-*   **Triage Proposals**: Automatically evaluate governance requests against complex fiduciary and public-benefit rules.
-*   **Allocate Grants**: Structure milestone-based funding pipelines with AI-generated decision memos.
-*   **Track Impact**: Monitor project progress via **Impact Snapshots** and verifiable performance scoring.
-*   **Audit Everything**: Maintain a tamper-evident **Governance Ledger** for every agent action.
+**The agent is advisory, never autonomous with funds.** It drafts. Humans decide.
 
 ---
 
-## 🏗️ System Architecture
+## Track: GCC Agentic Public Goods — Special Prize $1k–$5k
 
-```mermaid
-graph TD
-    subgraph Interface ["🌐 Interface Layer"]
-        TG["Telegram / Discord"]
-        GH["GitHub Issues"]
-        CLI["CLI Tool"]
-    end
+| Track Requirement | Implementation |
+|---|---|
+| DAO Governance | Proposal ingestion, compliance check against DAO charter + fiduciary rules |
+| Fund Allocation | Structured grant pipeline: triage → eligibility → alignment score → tranche plan |
+| Impact Evaluation | AI-generated Impact Snapshots with progress-vs-milestone scoring |
+| Workflow Optimization | End-to-end workflow: intake → risk screen → decision memo → follow-up |
+| AI Safety & Trust | Advisory-only mode, full governance ledger, no on-chain write access |
 
-    subgraph Brain ["🧠 Governance Brain (OpenClaw)"]
-        AGENT["AGI Copilot Agent"]
-        RULES["AGI Future Foundation Rules"]
-        CHARTER["DAO Charter / Policy"]
-        
-        AGENT -->|Consults| RULES
-        AGENT -->|Consults| CHARTER
-    end
+---
 
-    subgraph Tools ["🛠️ Execution Tools"]
-        EVAL["evaluate_proposal"]
-        IMPACT["generate_impact_snapshot"]
-        DIGEST["emit_governance_digest"]
-        LEDGER["ledger_logger"]
-    end
-
-    subgraph Safety ["🔒 Safety & Audit Layer"]
-        GL["Governance Ledger (JSONL)"]
-        FS["Fiduciary Shield (Constraints)"]
-        HUMAN["Human Sign-off (M-of-N)"]
-    end
-
-    Interface -->|Input| AGENT
-    AGENT -->|Triggers| Tools
-    Tools -->|Logs| GL
-    Tools -->|Outputs| Interface
-    GL -->|Verifies| FS
-    FS -->|Requires| HUMAN
+## Architecture
 ```
-
-
-### 🎙️ Real-time Voice Interface (Bodhi Agent)
-The AGI Governance Copilot features a high-performance voice interface powered by [Bodhi](https://github.com/AGI-Corporation/bodhi_realtime_agent). 
-* • **Parallel Execution**: Governance tasks run in the background while the voice agent remains conversational.
-* • **Interactive Subagents**: If the Copilot needs fiduciary clarification, it asks the user mid-task via natural voice.
-* • **Direct OpenClaw Integration**: The voice stack communicates directly with the OpenClaw gateway for seamless tool execution.
-
-### 🔄 Proposal Decision Flow
-```mermaid
-sequenceDiagram
-    participant User as 👤 DAO Steward
-    participant Agent as 🧠 AGI Copilot (OpenClaw)
-    participant FS as 🛡️ Fiduciary Shield
-    participant Tools as 🛠️ Governance Tools
-    participant Ledger as 📜 Governance Ledger
-
-    User->>Agent: Submit Proposal (GitHub/TG)
-    Agent->>FS: Validate Request Safety
-    FS-->>Agent: Check OK
-    Agent->>Tools: evaluate_proposal(data)
-    Tools->>Tools: Align with Public Benefit rules
-    Tools-->>Agent: Evaluation Result + Citations
-    Agent->>Ledger: Log Decision (Hash + Policy Ref)
-    Agent-->>User: Return Decision Memo (Draft)
-    Note over User: Human Review & Final Sign-off
+┌─────────────────────────────────────────────────────────┐
+│                    Interface Layer                      │
+│      Telegram · Discord · GitHub Issues · CLI           │
+└────────────────────┬────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────┐
+│          Governance Brain (OpenClaw Agent)              │
+│   LLM + DAO Charter + AGI Future Foundation Rules       │
+│   Fiduciary Shield · Institutional Grid · Public Benefit│
+└────────────────────┬────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────┐
+│                   Execution Tools                       │
+│     evaluate_proposal · generate_impact_snapshot        │
+│      emit_governance_digest · fetch_proposal            │
+└────────────────────┬────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────┐
+│                Safety & Audit Layer                     │
+│    Governance Ledger (JSONL) · No wallet/on-chain writes│
+│    Policy references in every output · Human sign-off   │
+└─────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🏆 GCC Agentic Public Goods Track
+## Features
 
-Built for the **GCC Agentic Public Goods** hackathon, focusing on transparent grant workflows and fiduciary AI safety.
+### 1. Proposal Ingestion & Evaluation
+- Accepts Markdown or JSON proposals (title, requester, amount, milestones, links)
+- Normalizes into a structured **Impact Card** schema
+- Evaluates against DAO rules + AGI Future Foundation fiduciary constraints
+- Returns: `Pass / Revise / Reject` + reasoning with clause references
 
-| Feature | Implementation | Goal |
-| :--- | :--- | :--- |
-| **DAO Governance** | Automated proposal ingestion & rule compliance checks. | Efficiency |
-| **Fund Allocation** | Tranche-based grant recommendations + milestone gates. | Accountability |
-| **Impact Evaluation** | AI-generated **Impact Snapshots** with progress scoring. | Transparency |
-| **Safety & Trust** | Advisory-only mode + tamper-evident Governance Ledger. | Trust |
+### 2. Fund Allocation Pipeline
+- Scores alignment with public-goods objectives
+- Recommends funding tranches and milestone gates
+- Generates decision memos ready for human review
+
+### 3. Impact Evaluation Loop
+- Reads periodic project updates (GitHub issues, forms, status posts)
+- Produces compact **Impact Snapshots**: progress, risks, open-source contribution score
+- Posts results back to GitHub as issue comments
+
+### 4. Governance Digest
+- Weekly or on-demand summary for DAO stewards
+- Highlights: new proposals pending review, stale projects, risk alerts
+- Delivered to Telegram, Discord, or GitHub
+
+### 5. Governance Ledger
+- Every agent recommendation logged to `governance-ledger.jsonl`
+- Each entry includes: timestamp, input hash, output hash, policy references
+- Provides a tamper-evident audit trail — the "AGI Institutional Ledger" made real
 
 ---
 
-## 🧠 Core Frameworks
+## Quick Start
 
-This project operationalizes the [AGI Future Foundation](https://www.agifuturefoundation.org) concepts:
+### Prerequisites
+- Python 3.11+
+- OpenClaw installed (`pip install openclaw`)
+- OpenAI or Anthropic API key
 
-*   **Fiduciary Shield**: Hard-coded constraints ensuring the agent never unilaterally moves funds.
-*   **Institutional Grid**: A structured repository of public-benefit obligations cited in every decision.
-*   **M.I.K.E. Framework**: Master Intelligence & Knowledge Executive — orchestrating specialized AI personas.
-*   **Governance Ledger**: A cryptographically hashed log of all AI reasoning steps.
-
----
-
-## 🚀 Getting Started
-
-### 📋 Prerequisites
-*   Python 3.11+
-*   OpenClaw (`pip install openclaw`)
-*   OpenAI / Anthropic API Key
-
-### 🛠️ Installation
+### Install
 ```bash
 git clone https://github.com/AGI-Corporation/agi-governance-copilot.git
 cd agi-governance-copilot
 pip install -r requirements.txt
 ```
 
----
-
-## 📊 Usage Examples
-
-### 1. Evaluate a Grant Proposal
+### Configure
 ```bash
+cp config/agent-config.example.yaml config/agent-config.yaml
+# Edit config/agent-config.yaml with your API keys and DAO rules path
+```
+
+### Run
+```bash
+# Evaluate a proposal
 python src/main.py evaluate --proposal examples/sample-proposal.json
-```
 
-**Example Agent Output (Impact Card):**
-```markdown
-### 🟢 Proposal Evaluation: Project 'Solar-Mesh'
-- **Status**: RECOMMEND PASS
-- **Alignment Score**: 9.2/10
-- **Fiduciary Check**: Valid (No direct transfer requested)
-- **Policy Citation**: Institutional Grid Clause 4.2.1 (Open Source Mandate)
-- **Recommended Tranches**: 
-  1. $5k on GitHub Repo Initialization
-  2. $10k on MVP release
-```
-
-### 2. Generate Impact Snapshot
-```bash
+# Generate impact snapshot for a funded project
 python src/main.py impact --project examples/sample-project-update.json
+
+# Emit governance digest
+python src/main.py digest
 ```
 
 ---
 
-## 🔒 Safety & Trust Design
-
-| Layer | Mechanism | Safety Purpose |
-| :--- | :--- | :--- |
-| **Constraint** | Advisory-Only | Prevent unauthorized fund movement. |
-| **Audit** | Governance Ledger | Tamper-evident record of all AI logic. |
-| **Policy** | Rule Grounding | Every output must cite the Institutional Grid. |
-| **Human** | Human-in-the-loop | Final decision-making power rests with stewards. |
-
----
-
-## 📈 Roadmap
-
-```mermaid
-timeline
-    title AGI Governance Copilot Roadmap
-    2025 Q2 : MVP Launch : GitHub Integration : Basic Proposal Evaluation
-    2025 Q3 : M.I.K.E. Persona Orchestration : Multi-agent review pipeline
-    2025 Q4 : OpenClaw-to-Chain : On-chain milestone verification
-    2026 : Institutional Deployment : Global Public Goods Infrastructure
+## Repository Structure
+```
+agi-governance-copilot/
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── config/
+│   ├── agent-config.example.yaml     # OpenClaw agent config template
+│   ├── example-dao-rules.md          # Sample DAO charter / governance rules
+│   └── public-goods-principles.md    # AGI Future Foundation public-benefit constraints
+├── docs/
+│   ├── architecture.md               # Conceptual → technical architecture mapping
+│   ├── governance-model.md           # Fiduciary shield + institutional grid explanation
+│   └── safety-and-audit.md           # Limitations, ledger design, safety constraints
+├── src/
+│   ├── main.py                       # CLI entrypoint
+│   ├── agent.py                      # OpenClaw agent initialization
+│   ├── tools/
+│   │   ├── evaluate_proposal.py      # Proposal evaluation tool
+│   │   ├── impact_snapshot.py        # Impact evaluation tool
+│   │   ├── governance_digest.py      # Digest generation tool
+│   │   └── ledger.py                 # Governance ledger logging
+│   └── schemas/
+│       ├── impact_card.py            # Impact Card schema
+│       └── risk_card.py              # Risk Card schema
+└── examples/
+    ├── sample-proposal.json          # Example grant proposal
+    ├── sample-project-update.json    # Example funded project update
+    ├── sample-impact-snapshot.json   # Example agent output
+    └── sample-governance-ledger.jsonl # Example audit log
 ```
 
 ---
 
-## 🤝 Contributing
+## Conceptual Foundation
+This project operationalizes the following AGI Future Foundation PBC frameworks:
 
-We welcome contributions! Please see our [Wiki](https://github.com/AGI-Corporation/agi-governance-copilot/wiki) for deep technical specs.
-
----
-
-## ⚖️ License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-## 🔗 Links
-
-*   **GCC Foundation**: [gccofficial.org](https://www.gccofficial.org/en)
-*   **OpenClaw**: [github.com/gcc-foundation/openclaw](https://github.com/gcc-foundation/openclaw)
-*   **AGI Future Foundation**: [agifuturefoundation.org](https://www.agifuturefoundation.org)
- <a>
-
-
-* • **Website**: [www.agicorp.network](http://www.agicorp.network)
-* • **Contact**: [x@agicorp.network](mailto:x@agicorp.network) | [mike@agicorp.network](mailto:mike@agicorp.network) (M.I.K.E.)
+| Framework | Implementation |
+|---|---|
+| **Institutional AGI Framework** | Agent role definition, tool boundaries, policy overlays |
+| **Fiduciary Shield** | Hard constraints: no fund transfers, human sign-off required |
+| **Institutional Grid** | Ruleset structure encoding public-benefit obligations |
+| **Governance Engine** | Proposal → evaluation → decision → follow-up pipeline |
+| **AGI Institutional Ledger** | Governance Ledger (JSONL) with hashed, auditable entries |
+| **Agentic Web Architecture** | Multi-channel delivery: GitHub, Telegram, Discord |
 
 ---
 
-## 🏗️ Builders & Investors
-We are actively seeking collaborators to expand the **Governance Engine** and institutional-grade AI safety frameworks. 
-* • **Builders**: Join our developer network to build the future of agentic public goods.
-* • **Investors**: Support the scaling of transparent, AI-governed funding ecosystems.
+## 🛠 Builders & Investors
+We are actively seeking contributors and strategic partners to expand the Institutional Grid.
+* **Builders**: Join our ecosystem to build the next generation of agentic governance tools. Check out the [MIKE-OGI-Framework](https://github.com/AGI-Corporation/agi-governance-copilot/wiki/MIKE-OGI-Framework) to start building sub-agents.
+* **Investors**: For partnership inquiries and strategic collaboration, please reach out via the contact info below.
 
-Get in touch at [x@agicorp.network](mailto:x@agicorp.network) to join the mission.
+---
+
+## 📧 Contact & Support
+* **General Inquiries**: [x@agicorp.network](mailto:x@agicorp.network)
+* **Technical (M.I.K.E.)**: [mike@agicorp.network](mailto:mike@agicorp.network)
+* **Website**: [www.agicorp.network](https://www.agicorp.network)
+
+---
+
+## Safety & Trust Design
+- **Advisory only**: the agent never holds or moves funds; all outputs are drafts for human review
+- **Policy-grounded outputs**: every evaluation cites specific rule clauses
+- **Auditable ledger**: all tool calls logged with timestamps and content hashes
+- **No credential storage**: API keys loaded from environment variables only
+- **Open-source**: full source available for inspection and audit
+
+---
+
+## License
+MIT License — see [LICENSE](LICENSE)
+
+---
+
+## Contributing
+PRs welcome. See [docs/architecture.md](docs/architecture.md) to understand the design. All contributions must maintain the advisory-only safety model and open governance ledger.
+
+---
+
+## Links
+- GCC Foundation: https://www.gccofficial.org/en
+- GCC OpenClaw Grants: https://github.com/gcc-foundation/gcc-openclaw-grants
+- AGI Corporation: https://www.agicorp.network
+- AGI Future Foundation: https://www.agifuturefoundation.org
