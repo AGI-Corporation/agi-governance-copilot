@@ -194,3 +194,16 @@ Distributed under the MIT License. See `LICENSE` for more information.
 *   **OpenClaw**: [github.com/gcc-foundation/openclaw](https://github.com/gcc-foundation/openclaw)
 *   **AGI Future Foundation**: [agifuturefoundation.org](https://www.agifuturefoundation.org)
  <a>
+
+
+* • **Website**: [www.agicorp.network](http://www.agicorp.network)
+* • **Contact**: [x@agicorp.network](mailto:x@agicorp.network) | [mike@agicorp.network](mailto:mike@agicorp.network) (M.I.K.E.)
+
+---
+
+## 🏗️ Builders & Investors
+We are actively seeking collaborators to expand the **Governance Engine** and institutional-grade AI safety frameworks. 
+* • **Builders**: Join our developer network to build the future of agentic public goods.
+* • **Investors**: Support the scaling of transparent, AI-governed funding ecosystems.
+
+Get in touch at [x@agicorp.network](mailto:x@agicorp.network) to join the mission.
