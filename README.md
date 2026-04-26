@@ -334,4 +334,5 @@ PRs welcome. See [docs/architecture.md](docs/architecture.md) to understand the 
 - GCC OpenClaw Grants: https://github.com/gcc-foundation/gcc-openclaw-grants
 - Bodhi Realtime Agent: https://github.com/AGI-Corporation/bodhi_realtime_agent
 - AGI Corporation: https://www.agicorp.network
-- AGI Future Foundation: https://www.agifuturefoundation.org
+- AGI Future Foundation: https://www.agicorp.network
+- AGI Future Foundationyou tube : (https://www.youtube.com/@AGI-Corp)
