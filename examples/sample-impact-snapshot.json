@@ -1,0 +1,48 @@
+{
+  "_note": "This is a sample output from the AGI Governance Copilot impact evaluation tool",
+  "project_id": "grant-2025-001",
+  "project_title": "Open-Source AGI Safety Monitoring Dashboard",
+  "snapshot_date": "2025-04-26T09:00:00Z",
+  "evaluation_period": "Week 8 of 16",
+  "ledger_entry_id": "a3f2c1d4e5b6",
+
+  "milestone_progress": {
+    "milestone_1": { "status": "Completed", "deliverable": "Data ingestion pipeline", "notes": "GitHub merged, CI passing" },
+    "milestone_2": { "status": "In Progress (75%)", "deliverable": "Anomaly detection module", "notes": "Statistical baseline complete; ensemble model pending" },
+    "milestone_3": { "status": "Not Started", "deliverable": "React dashboard", "notes": "Scheduled for weeks 9-14" },
+    "milestone_4": { "status": "Not Started", "deliverable": "Documentation + demo", "notes": "Scheduled for weeks 15-16" }
+  },
+
+  "overall_progress_pct": 55,
+  "on_track": true,
+
+  "open_source_score": {
+    "score": 4.5,
+    "evidence": [
+      "MIT-licensed repo with 23 stars and 4 forks",
+      "Weekly dev logs published to GitHub Discussions",
+      "Full test suite with 78% code coverage"
+    ]
+  },
+
+  "public_benefit_assessment": {
+    "score": 4.2,
+    "beneficiaries_reached": "Tool integrated into 3 DAO governance stacks during beta",
+    "notes": "Exceeds initial target of 200 orgs; actual beta reach is narrower but depth is strong"
+  },
+
+  "risk_flags": [
+    {
+      "flag": "Milestone 2 is 2 weeks behind internal schedule",
+      "severity": "Low",
+      "mitigation": "Team has added one part-time contributor; still within grant deadline"
+    }
+  ],
+
+  "agent_recommendation": "Continue funding. Project is progressing well with strong open-source engagement. Milestone 2 delay is within acceptable tolerance. Recommend scheduling mid-term review check-in as budget crosses $8,000 disbursed (per policy F-4 accountability threshold).",
+
+  "policy_references": ["F-4 Accountability - mid-term review threshold", "Fiduciary Obligation #4 - Transparency"],
+
+  "human_signoff_required": true,
+  "agent_version": "0.1.0"
+}
