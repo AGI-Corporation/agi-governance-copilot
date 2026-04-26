@@ -1,0 +1,60 @@
+# AGI Governance Copilot - OpenClaw Agent Configuration
+# Copy this file to agent-config.yaml and fill in your values
+
+agent:
+  name: agi-governance-copilot
+  version: "0.1.0"
+  description: "Fiduciary AI governance copilot for DAOs and public-goods funds"
+
+# LLM Provider (choose one)
+llm:
+  provider: openai  # openai | anthropic
+  model: gpt-4o
+  api_key: ${OPENAI_API_KEY}  # Set in environment
+  temperature: 0.2
+  max_tokens: 4096
+
+# Governance rules and policy files
+policies:
+  dao_rules: config/example-dao-rules.md
+  public_goods_principles: config/public-goods-principles.md
+  fiduciary_constraints:
+    - no_fund_transfers: true       # Agent NEVER transfers funds
+    - require_human_signoff: true   # All decisions require human approval
+    - cite_policy_clauses: true     # All outputs must cite rule sources
+    - max_recommendation_amount: 50000  # USD - flag anything above this
+
+# Tools enabled for this agent
+tools:
+  evaluate_proposal: true
+  generate_impact_snapshot: true
+  emit_governance_digest: true
+  fetch_github_issue: true
+  post_github_comment: true
+  send_telegram_message: false  # Enable if using Telegram integration
+
+# Governance Ledger (audit log)
+ledger:
+  enabled: true
+  path: governance-ledger.jsonl
+  hash_inputs: true
+  hash_outputs: true
+
+# GitHub Integration
+github:
+  token: ${GITHUB_TOKEN}
+  repo: your-org/your-dao-repo
+  proposal_label: proposal
+  evaluation_label: evaluated
+
+# Telegram Integration (optional)
+telegram:
+  token: ${TELEGRAM_BOT_TOKEN}
+  chat_id: ${TELEGRAM_CHAT_ID}
+
+# Digest schedule
+digest:
+  schedule: weekly  # daily | weekly | manual
+  day_of_week: monday
+  time: "09:00"
+  timezone: UTC
