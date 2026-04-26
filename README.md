@@ -1,7 +1,10 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AGI-Corporation/agi-governance-copilot/main/assets/header-wiki.svg" width="100%" alt="AGI Governance Copilot Header">
+</p>
+
 # AGI Governance Copilot 🛡️🏛️
 
-> **An OpenClaw-powered agentic governance assistant for DAOs and public-goods funds — built on the
-AGI Future Foundation's Institutional AGI, Fiduciary Shield, and Governance Engine frameworks.**
+> **An OpenClaw-powered agentic governance assistant for DAOs and public-goods funds — built on the AGI Future Foundation's Institutional AGI, Fiduciary Shield, and Governance Engine frameworks.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Built with OpenClaw](https://img.shields.io/badge/Built%20with-OpenClaw-purple)](https://github.com/gcc-foundation/openclaw)
@@ -18,9 +21,6 @@ The **AGI Governance Copilot** is the first reference implementation of the [AGI
 *   **Allocate Grants**: Structure milestone-based funding pipelines with AI-generated decision memos.
 *   **Track Impact**: Monitor project progress via **Impact Snapshots** and verifiable performance scoring.
 *   **Audit Everything**: Maintain a tamper-evident **Governance Ledger** for every agent action.
-
-> [!IMPORTANT]
-> **The agent is advisory-only.** It drafts recommendations, but never autonomously executes fund transfers or on-chain writes. **Humans decide.**
 
 ---
 
@@ -64,6 +64,26 @@ graph TD
     FS -->|Requires| HUMAN
 ```
 
+### 🔄 Proposal Decision Flow
+```mermaid
+sequenceDiagram
+    participant User as 👤 DAO Steward
+    participant Agent as 🧠 AGI Copilot (OpenClaw)
+    participant FS as 🛡️ Fiduciary Shield
+    participant Tools as 🛠️ Governance Tools
+    participant Ledger as 📜 Governance Ledger
+
+    User->>Agent: Submit Proposal (GitHub/TG)
+    Agent->>FS: Validate Request Safety
+    FS-->>Agent: Check OK
+    Agent->>Tools: evaluate_proposal(data)
+    Tools->>Tools: Align with Public Benefit rules
+    Tools-->>Agent: Evaluation Result + Citations
+    Agent->>Ledger: Log Decision (Hash + Policy Ref)
+    Agent-->>User: Return Decision Memo (Draft)
+    Note over User: Human Review & Final Sign-off
+```
+
 ---
 
 ## 🏆 GCC Agentic Public Goods Track
@@ -83,10 +103,10 @@ Built for the **GCC Agentic Public Goods** hackathon, focusing on transparent gr
 
 This project operationalizes the [AGI Future Foundation](https://www.agifuturefoundation.org) concepts:
 
-*   **Fiduciary Shield**: A set of hard-coded agentic constraints ensuring no unilateral financial access.
-*   **Institutional Grid**: A structured repository of public-benefit obligations that the AI must cite in every decision.
-*   **M.I.K.E. Framework**: Master Intelligence & Knowledge Executive — orchestrating specialized AI personas for domain-specific review.
-*   **Governance Ledger**: A cryptographically hashed log of all AI reasoning steps, inputs, and outputs.
+*   **Fiduciary Shield**: Hard-coded constraints ensuring the agent never unilaterally moves funds.
+*   **Institutional Grid**: A structured repository of public-benefit obligations cited in every decision.
+*   **M.I.K.E. Framework**: Master Intelligence & Knowledge Executive — orchestrating specialized AI personas.
+*   **Governance Ledger**: A cryptographically hashed log of all AI reasoning steps.
 
 ---
 
@@ -104,63 +124,61 @@ cd agi-governance-copilot
 pip install -r requirements.txt
 ```
 
-### ⚙️ Configuration
-```bash
-cp config/agent-config.example.yaml config/agent-config.yaml
-# Add your API keys and define your DAO_CHARTER_PATH
-```
-
 ---
 
-## 📊 Usage
+## 📊 Usage Examples
 
 ### 1. Evaluate a Grant Proposal
 ```bash
 python src/main.py evaluate --proposal examples/sample-proposal.json
 ```
-*Output: Structured compliance report with specific rule citations.*
+
+**Example Agent Output (Impact Card):**
+```markdown
+### 🟢 Proposal Evaluation: Project 'Solar-Mesh'
+- **Status**: RECOMMEND PASS
+- **Alignment Score**: 9.2/10
+- **Fiduciary Check**: Valid (No direct transfer requested)
+- **Policy Citation**: Institutional Grid Clause 4.2.1 (Open Source Mandate)
+- **Recommended Tranches**: 
+  1. $5k on GitHub Repo Initialization
+  2. $10k on MVP release
+```
 
 ### 2. Generate Impact Snapshot
 ```bash
 python src/main.py impact --project examples/sample-project-update.json
 ```
-*Output: A Markdown summary of project health, risks, and milestone progress.*
-
-### 3. Emit Governance Digest
-```bash
-python src/main.py digest
-```
-*Output: Weekly summary sent to configured Telegram/Discord channels.*
 
 ---
 
-## 🔒 Safety & Fiduciary Design
+## 🔒 Safety & Trust Design
 
-We implement a **Tri-Layer Safety Model**:
-
-1.  **Input Filtering**: All inputs are sanitized and checked for prompt injection or policy-violating requests.
-2.  **Context Injection**: Every tool call is pre-loaded with the **Fiduciary Shield** ruleset, preventing the LLM from "forgetting" its advisory-only role.
-3.  **Audit Trail**: The `governance-ledger.jsonl` provides a permanent, verifiable record of every recommendation.
+| Layer | Mechanism | Safety Purpose |
+| :--- | :--- | :--- |
+| **Constraint** | Advisory-Only | Prevent unauthorized fund movement. |
+| **Audit** | Governance Ledger | Tamper-evident record of all AI logic. |
+| **Policy** | Rule Grounding | Every output must cite the Institutional Grid. |
+| **Human** | Human-in-the-loop | Final decision-making power rests with stewards. |
 
 ---
 
 ## 📈 Roadmap
 
-*   **Q2 2025**: MVP with GitHub Issue integration & basic proposal evaluation.
-*   **Q3 2025**: Multi-agent persona orchestration (M.I.K.E. framework implementation).
-*   **Q4 2025**: Integration with on-chain oracle for milestone verification (OpenClaw-to-Chain).
-*   **2026**: Full Institutional AGI deployment for global public goods funds.
+```mermaid
+timeline
+    title AGI Governance Copilot Roadmap
+    2025 Q2 : MVP Launch : GitHub Integration : Basic Proposal Evaluation
+    2025 Q3 : M.I.K.E. Persona Orchestration : Multi-agent review pipeline
+    2025 Q4 : OpenClaw-to-Chain : On-chain milestone verification
+    2026 : Institutional Deployment : Global Public Goods Infrastructure
+```
 
 ---
 
 ## 🤝 Contributing
 
 We welcome contributions! Please see our [Wiki](https://github.com/AGI-Corporation/agi-governance-copilot/wiki) for deep technical specs.
-
-1.  Fork the repo.
-2.  Create your feature branch.
-3.  Ensure your code maintains the **advisory-only** safety model.
-4.  Submit a PR with a detailed description.
 
 ---
 
