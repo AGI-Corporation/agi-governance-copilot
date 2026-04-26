@@ -1,0 +1,58 @@
+{
+  "title": "Open-Source AGI Safety Monitoring Dashboard",
+  "requester": "DeSci Commons Collective",
+  "requester_github": "https://github.com/desci-commons",
+  "requested_amount_usd": 12000,
+  "duration_months": 4,
+  "accountability_lead": "Dr. Alex Chen (alex@desci-commons.org)",
+  "category": "AI Safety Tooling",
+  "public_license": "MIT",
+  "description": "We propose to build an open-source dashboard that monitors AI agent behavior across multiple DAO governance contexts. The system will track proposal patterns, voting anomalies, and policy drift in real-time, surfacing alerts when governance behavior deviates from established norms. All code will be MIT-licensed and the live dashboard will be publicly accessible.",
+  "problem_statement": "DAO governance processes lack real-time observability into AI-assisted decision patterns. Stewards cannot easily detect when agent recommendations cluster in ways that may reflect bias or policy drift, creating invisible concentration risk.",
+  "deliverables": [
+    {
+      "milestone": 1,
+      "description": "Data ingestion pipeline for GitHub Issues and Snapshot votes",
+      "budget_usd": 3000,
+      "deadline_weeks": 4
+    },
+    {
+      "milestone": 2,
+      "description": "Anomaly detection module using statistical baseline models",
+      "budget_usd": 4000,
+      "deadline_weeks": 8
+    },
+    {
+      "milestone": 3,
+      "description": "React dashboard with alert system and public API",
+      "budget_usd": 3500,
+      "deadline_weeks": 14
+    },
+    {
+      "milestone": 4,
+      "description": "Documentation, deployment guide, and demo video",
+      "budget_usd": 1500,
+      "deadline_weeks": 16
+    }
+  ],
+  "team": [
+    {
+      "name": "Dr. Alex Chen",
+      "role": "Lead Engineer",
+      "github": "https://github.com/alexchen-desci",
+      "relevant_experience": "5 years building governance tooling for DeSci communities"
+    },
+    {
+      "name": "Maria Santos",
+      "role": "Data Scientist",
+      "relevant_experience": "ML researcher, 3 published papers on algorithmic fairness"
+    }
+  ],
+  "beneficiaries": "All DAOs using AI-assisted governance tooling; estimated 200+ orgs in the public-goods ecosystem",
+  "open_source_plan": "All code under MIT license. Monthly dev logs published on GitHub. Final dataset made available under CC-BY-4.0 within 90 days of project completion.",
+  "risk_assessment": "Primary risk is adoption friction; mitigated by designing for easy integration. No personal data collected. No irreversible operations.",
+  "links": {
+    "github": "https://github.com/desci-commons/agi-monitor",
+    "draft_spec": "https://github.com/desci-commons/agi-monitor/blob/main/SPEC.md"
+  }
+}
