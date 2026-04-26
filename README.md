@@ -106,7 +106,120 @@ This project is the **first reference implementation** of the [AGI Future Founda
 ### Install
 ```bash
 git clone https://github.com/AGI-Corporation/agi-governance-copilot.git
+cd agi-governance-copilot<p align=\"center\">
+  <img src=\"https://raw.githubusercontent.com/AGI-Corporation/agi-governance-copilot/main/assets/header-wiki.svg\" width=\"100%\" alt=\"AGI Governance Copilot Header\">
+</p>
+
+# AGI Governance Copilot 🛡️🏛️
+
+**An OpenClaw-powered agentic governance assistant for DAOs and public-goods funds — built on the AGI Future Foundation's Institutional AGI, Fiduciary Shield, and Governance Engine frameworks.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Built with OpenClaw](https://img.shields.io/badge/Built%20with-OpenClaw-purple)](https://github.com/gcc-foundation/openclaw)
+[![GCC Agentic Public Goods Track](https://img.shields.io/badge/GCC-Agentic%20Public%20Goods-green)](https://www.gccofficial.org/en)
+[![Documentation](https://img.shields.io/badge/docs-Wiki-blue)](https://github.com/AGI-Corporation/agi-governance-copilot/wiki)
+
+## 🎯 Overview
+
+This project is the **first reference implementation** of the [AGI Future Foundation PBC](https://www.agifuturefoundation.org/)'s Institutional AGI governance architecture. It translates complex fiduciary and public-benefit obligations into a working agentic stack.
+
+Now featuring **Deep Bodhi Realtime Voice Integration**, allowing human supervisors to interact with the governance engine naturally while parallel async sub-agents handle complex audits and evaluations in the background.
+
+### Key Capabilities:
+- **Triage & Evaluate:** Automatically evaluate governance proposals against fiduciary and public-benefit rules.
+- **Grant Allocation:** Recommend tranches and milestone gates based on alignment scores.
+- **Impact Snapshots:** Track project progress via AI-generated reports and GitHub status tracking.
+- **Governance Ledger:** Maintain a verifiable, hashed audit trail of every agent action.
+- **Voice Interface:** High-assurance oversight and natural language digests via the **Bodhi Realtime Agent**.
+
+---
+
+## 🎙️ Bodhi Realtime Integration
+
+The AGI Governance Copilot now leverages the [Bodhi Realtime Agent](https://github.com/AGI-Corporation/bodhi_realtime_agent) as its primary interactive layer.
+
+- **Natural Oversight:** \"Bodhi, summarize the pending grant proposals for this week.\"
+- **Parallel Execution:** While you converse with Bodhi, background sub-agents perform real-time cross-model audits and compliance checks.
+- **Voice-Auth:** High-impact fiduciary decisions require voice-biometric confirmation, ensuring human-in-the-loop safety.
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    User((👤 User)) -- \"Voice/Text\" --> Bodhi[\"🎙️ Bodhi Realtime Agent\"]
+    Bodhi -- \"Orchestration\" --> MIKE[\"🧠 M.I.K.E. Engine\"]
+    
+    MIKE -- \"Evaluation\" --> GovEngine[\"⚖️ Governance Engine\"]
+    GovEngine -- \"Audit\" --> Ledger[\"📜 Governance Ledger\"]
+    
+    MIKE -- \"Parallel Audit\" --> SubAgents[\"🤖 Sub-Agents\"]
+    SubAgents -- \"Cross-Model Verification\" --> MIKE
+    
+    MIKE -- \"External Delivery\" --> Out[\"📱 Telegram / Discord / GitHub\"]
+```
+
+---
+
+## 🛠️ Conceptual Foundation
+
+This project operationalizes the following AGI Future Foundation PBC frameworks:
+
+| Framework | Implementation |
+|-----------|----------------|
+| **Institutional AGI** | Agent role definition, tool boundaries, and policy overlays. |
+| **Fiduciary Shield** | Hard constraints: no autonomous fund transfers, human sign-off required. |
+| **Institutional Grid** | Ruleset structure encoding public-benefit obligations. |
+| **Governance Engine** | Proposal → evaluation → decision → follow-up pipeline. |
+| **Bodhi Voice Stack** | Real-time, non-blocking interface for human-agent collaboration. |
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.11+
+- [OpenClaw](https://github.com/gcc-foundation/openclaw) installed: `pip install openclaw`
+- [Bodhi Realtime Agent](https://github.com/AGI-Corporation/bodhi_realtime_agent) for voice capabilities.
+
+### Installation
+```bash
+git clone https://github.com/AGI-Corporation/agi-governance-copilot.git
 cd agi-governance-copilot
+pip install -r requirements.txt
+```
+
+### Configuration
+1. Copy the example config: `cp config/agent-config.example.yaml config/agent-config.yaml`
+2. Edit `config/agent-config.yaml` with your API keys and DAO rules path.
+
+---
+
+## 🛠 Builders & Investors
+
+We are actively seeking contributors to expand the **Institutional Grid**.
+
+* **Builders:** Help us build specialized MCP servers and cognitive sub-agents. See the [MIKE-OGI-Framework](https://github.com/AGI-Corporation/agi-governance-copilot/wiki/MIKE-OGI-Framework) to get started.
+* **Investors:** Align with the OGI model. For partnership inquiries, please contact us.
+
+## 📧 Contact & Support
+* **General:** [contact@agicorp.network](mailto:contact@agicorp.network)
+* **Technical (M.I.K.E.):** [mike@agicorp.network](mailto:mike@agicorp.network)
+* **Support:** [hello@maxhealth.tech](mailto:hello@maxhealth.tech)
+* **Website:** [www.agicorp.network](https://www.agicorp.network)
+* **Social:** [LinkedIn](https://www.linkedin.com/in/infogurus) | [X (Twitter)](https://x.com/idescidude)
+
+---
+
+### Links
+- **Bodhi Realtime Agent:** [GitHub](https://github.com/AGI-Corporation/bodhi_realtime_agent)
+- **AGI Future Foundation:** [agifuturefoundation.org](https://www.agifuturefoundation.org)
+- **GCC Foundation:** [gccofficial.org](https://www.gccofficial.org/en)
+
+---
+*Built for the GCC Agentic Public Goods Track.*
+
 pip install -r requirements.txt
 ```
 
